@@ -15,29 +15,43 @@ namespace Zero_Hunger.Controllers
         [adminAccess]
         public ActionResult Index()
         {
-            return View();
+            var db = new zero_hungerEntities();
+            return View(db.employees.ToList());
         }
         [HttpPost]
         public ActionResult login(loginDTO obj)
         {
-            var db = new zero_hungerEntities();
-            var user = (from u in db.admins
-                        where 
-                            u.username.Equals(obj.username) &&
-                            u.password.Equals(obj.password)
-                        select u).SingleOrDefault();
-            if (user != null)
+            if(ModelState.IsValid)
             {
-                Session["user"] = user.username;
-                Session["id"] = user.id;
-                Session["type"] = "admin";
-                return RedirectToAction("Index");
+                var db = new zero_hungerEntities();
+                var user = (from u in db.admins
+                            where 
+                                u.username.Equals(obj.username) &&
+                                u.password.Equals(obj.password)
+                            select u).SingleOrDefault();
+                if (user != null)
+                {
+                    Session["user"] = user.username;
+                    Session["id"] = user.id;
+                    Session["type"] = "admin";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["msg"] = "Invalid credential";
+                }
             }
             return View(obj);
         }
+        [HttpGet]
         public ActionResult login()
         {
             return View();
+        }
+        public ActionResult logout()
+        {
+            Session.Clear();
+            return RedirectToAction("login");
         }
         [HttpGet]
         [adminAccess]

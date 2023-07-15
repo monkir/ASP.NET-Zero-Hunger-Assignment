@@ -1,9 +1,15 @@
 ﻿
 @model Zero_Hunger.Models.loginDTO
 @{
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
     ViewBag.Title = "login";
 }
-
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["msg"]
+    </div>
+}
 <form method="post">
     <fieldset>
         <legend>Login</legend>
