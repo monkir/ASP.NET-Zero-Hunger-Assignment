@@ -17,23 +17,7 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    @if (Session["user"] != null && Session["type"].ToString().Equals("admin"))
-                    {
-                        <li>@Html.ActionLink("Index", "Index", "admin", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Logout", "logout", "admin", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>
-                            <span type="button" class="btn btn-primary position-relative">
-                                @Session["user"]
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    <span class="visually-hidden">unread messages</span>
-                                </span>
-                            </span>
-                        </li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Login", "login", "admin", new { area = "" }, new { @class = "nav-link" })</li>
-                    }
+                    <li><span class="nav-item">Welcome</span></li>
                 </ul>
             </div>
         </div>
@@ -49,11 +33,11 @@
                 <li class="list-group-item">@Html.ActionLink("Restaurant Panel", "login", "restaurant", new { area = "" }, new { @class = "nav-link" })</li>
             </ul>
         }
+        <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

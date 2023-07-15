@@ -133,6 +133,7 @@
     <Compile Include="Auth\empAccess.cs" />
     <Compile Include="Auth\adminAccess.cs" />
     <Compile Include="Controllers\adminController.cs" />
+    <Compile Include="Controllers\employeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\restaurantController.cs" />
     <Compile Include="DB\admin.cs">
@@ -169,7 +170,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\addemployeeDTO.cs" />
+    <Compile Include="Models\addFoodDTO.cs" />
     <Compile Include="Models\loginDTO.cs" />
+    <Compile Include="Models\processRequestDTO.cs" />
     <Compile Include="Models\restSignupDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -249,10 +252,16 @@
     <Content Include="Views\restaurant\signup.cshtml" />
     <Content Include="Views\restaurant\login.cshtml" />
     <Content Include="Views\restaurant\Index.cshtml" />
+    <Content Include="Views\Shared\_empLayout.cshtml" />
+    <Content Include="Views\employee\login.cshtml" />
+    <Content Include="Views\employee\Index.cshtml" />
+    <Content Include="Views\restaurant\add.cshtml" />
+    <Content Include="Views\restaurant\cart.cshtml" />
+    <Content Include="Views\restaurant\checkout.cshtml" />
+    <Content Include="Views\restaurant\requestdetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\employee\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -4,6 +4,12 @@
     Layout = "~/Views/Shared/_restLayout.cshtml";
 }
 
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["msg"]
+    </div>
+}
 <h2>signup</h2>
 <form method="post">
     <h3>Enter information</h3>

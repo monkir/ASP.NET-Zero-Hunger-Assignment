@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Zero_Hunger.Models.addFoodDTO>
+
+@{
+    ViewBag.Title = "cart";
+    Layout = "~/Views/Shared/_restLayout.cshtml";
+}
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["msg"]
+    </div>
+}
+<h2>cart</h2>
+@if (Model == null)
+{
+    <h1>No food is added yet</h1>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Type
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.type
+                </td>
+                <td>
+                    @item.quantity
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+@Html.ActionLink("Add more Food", "add", "restaurant", new { area = "" }, new { @class = "btn btn-success" })
+@Html.ActionLink("Checkout", "checkout", "restaurant", new { area = "" }, new { @class = "btn btn-dark" })
+@Html.ActionLink("Clear", "clear", "restaurant", new { area = "" }, new { @class = "btn btn-danger" })

@@ -1,0 +1,91 @@
+﻿@model Zero_Hunger.DB.request
+
+@{
+    ViewBag.Title = "requestdetails";
+    Layout = "~/Views/Shared/_restLayout.cshtml";
+}
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["msg"]
+    </div>
+}
+<h2>requestdetails</h2>
+
+<ul class="list-group list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                ID
+            </div>
+            @Model.id
+        </div>
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                Status
+            </div>
+            @Model.status
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                Order datetime
+            </div>
+            @Model.order_datetime.ToString();
+        </div>
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                Expire Date time
+            </div>
+            @Model.expire_datetime.ToString();
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                Requested by
+            </div>
+            @Model.restaurant.username
+        </div>
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                Total quantity
+            </div>
+            @Model.total_quantity
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                Assigned Employee
+            </div>
+            @(Model.employee != null ? Model.employee.username : "Not assigned")
+        </div>
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                Assigned by
+            </div>
+            @(Model.admin != null ? Model.admin.username : "Not assigned")
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <ul>
+            @foreach (var item in Model.foods.ToList())
+            {
+                <li>
+                    ID: @item.id
+                    <ul>
+                        <li>
+                            ID: @item.type
+                        </li>
+                        <li>
+                            ID: @item.quantity
+                        </li>
+                    </ul>
+                </li>
+            }
+        </ul>
+    </li>
+</ul>
