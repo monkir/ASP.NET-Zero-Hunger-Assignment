@@ -169,6 +169,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\assignEmpDTO.cs" />
+    <Compile Include="Models\editEmployeeDTO.cs" />
     <Compile Include="Models\addemployeeDTO.cs" />
     <Compile Include="Models\addFoodDTO.cs" />
     <Compile Include="Models\loginDTO.cs" />
@@ -259,6 +261,14 @@
     <Content Include="Views\restaurant\cart.cshtml" />
     <Content Include="Views\restaurant\checkout.cshtml" />
     <Content Include="Views\restaurant\requestdetails.cshtml" />
+    <Content Include="Views\admin\employeelist.cshtml" />
+    <Content Include="Views\admin\editEmployee.cshtml" />
+    <Content Include="Views\admin\requestlist.cshtml" />
+    <Content Include="Views\admin\requestdetails.cshtml" />
+    <Content Include="Views\admin\restaurantDetails.cshtml" />
+    <Content Include="Views\employee\requestlist.cshtml" />
+    <Content Include="Views\employee\restaurantDetails.cshtml" />
+    <Content Include="Views\employee\requestdetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

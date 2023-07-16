@@ -4,6 +4,12 @@
     Layout = "~/Views/Shared/_empLayout.cshtml";
 }
 
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["msg"]
+    </div>
+}
 <h2>login</h2>
 
 @if (TempData["msg"] != null)

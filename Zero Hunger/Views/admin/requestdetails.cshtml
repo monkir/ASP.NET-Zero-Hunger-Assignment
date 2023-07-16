@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "requestdetails";
-    Layout = "~/Views/Shared/_restLayout.cshtml";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
 }
 
 @if (TempData["msg"] != null)
@@ -47,7 +47,9 @@
             <div class="fw-bold">
                 Requested by
             </div>
-            @Model.restaurant.username
+            <a href="/admin/restaurantDetails/@Model.restaurant.id.ToString()">
+                @Model.restaurant.username
+            </a>
         </div>
         <div class="ms-2 me-auto">
             <div class="fw-bold">
@@ -62,6 +64,23 @@
                 Assigned Employee
             </div>
             @(Model.employee != null ? Model.employee.username : "Not assigned")
+            @if (Model.employee != null)
+            {
+                <a href="#">@Model.employee.username</a>
+            }
+            else
+            {
+                <span>Not assigned</span>
+            }
+            @if (!Model.status.Equals("collected"))
+            {
+                <!-- Form is here-->
+                <form method="post">
+                    <input type="hidden" value="@Model.id.ToString()" name="id" />
+                    <input type="text" name="emp_id" placeholder="@(Model.employee != null ? Model.employee.id.ToString() : "Not assigned")" />
+                    <input type="submit" value="Assign or Change" class="btn btn-danger" />
+                </form>
+            }
         </div>
         <div class="ms-2 me-auto">
             <div class="fw-bold">

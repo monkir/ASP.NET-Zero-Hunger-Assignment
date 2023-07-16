@@ -78,6 +78,7 @@ namespace Zero_Hunger.Controllers
                 }
                 db.SaveChanges();
                 Session["foodlist"] = null;
+                TempData["msg"] = "Successfully added an reqest";
                 return RedirectToAction("cart");
             }
             return View(pr);
@@ -106,7 +107,7 @@ namespace Zero_Hunger.Controllers
                 }
                 foodList.Add(afDTO);
                 Session["foodlist"]=foodList;
-                TempData["msg"] = "New food is added to request";
+                TempData["msg"] = "New food is added to request(total food "+foodList.Count+")";
                 return RedirectToAction("cart");
             }
             return View(afDTO);
@@ -138,6 +139,7 @@ namespace Zero_Hunger.Controllers
                     Session["user"] = user.username;
                     Session["id"] = user.id;
                     Session["type"] = "restaurant";
+                    TempData["msg"] = "Successfully logged in";
                     return RedirectToAction("Index");
                 }
                 else
@@ -151,6 +153,7 @@ namespace Zero_Hunger.Controllers
         public ActionResult logout()
         {
             Session.Clear();
+            TempData["msg"] = "Successfully logged out";
             return RedirectToAction("login");
         }
         [HttpGet]
@@ -166,6 +169,7 @@ namespace Zero_Hunger.Controllers
                 var db = new zero_hungerEntities();
                 db.restaurants.Add(convert(obj));
                 db.SaveChanges();
+                TempData["msg"] = "Successfully signed up";
                 return RedirectToAction("login");
             }
             return View(obj);

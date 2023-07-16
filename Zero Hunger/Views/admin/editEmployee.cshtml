@@ -1,5 +1,5 @@
 ﻿
-@model Zero_Hunger.Models.addemployeeDTO
+@model Zero_Hunger.Models.editEmployeeDTO
 @{
     Layout = "~/Views/Shared/_adminLayout.cshtml";
     ViewBag.Title = "addemployee";
@@ -19,9 +19,9 @@
 }
 
 <form method="post">
-    <h3>Enter information</h3>
     <fieldset>
-        <legend>Enter information:</legend>
+        <legend>Information:</legend>
+        <input value="@(Model !=null ? Model.id.ToString() : "")" class="form-control" type="hidden" name="id" placeholder="id" />
         <input value="@(Model !=null ? Model.name : "")" class="form-control" type="text" name="name" placeholder="name" />
         <span class="text-danger">@Html.ValidationMessage("name")</span>
         <input value="@(Model !=null ? Model.email : "")" class="form-control" type="text" name="email" placeholder="email" />
@@ -34,13 +34,9 @@
         <span class="text-danger">@Html.ValidationMessage("dob")</span>
     </fieldset>
     <fieldset>
-        <legend>Choose username and password</legend>
+        <legend>Username</legend>
         <input value="@(Model !=null ? Model.username : "")" class="form-control" type="text" name="username" placeholder="Username" />
         <span class="text-danger">@Html.ValidationMessage("username")</span>
-        <input value="@(Model !=null ? Model.password : "")" class="form-control" type="password" name="password" placeholder="Choose password" />
-        <span class="text-danger">@Html.ValidationMessage("password")</span>
-        <input value="@(Model !=null ? Model.cpassword : "")" class="form-control" type="password" name="cpassword" placeholder="Confirm password" />
-        <span class="text-danger">@Html.ValidationMessage("cpassword")</span><br />
         <input type="submit" class="btn-danger" />
     </fieldset>
 </form>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,6 +18,46 @@ namespace Zero_Hunger.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        [empAccess]
+        [HttpGet]
+        public ActionResult collectRequest(int id)
+        {
+            var db = new zero_hungerEntities();
+            request rq = db.requests.Find(id);
+            if(rq==null)
+            {
+                TempData["msg"]= "Three is no request with id " + id.ToString();
+            }
+            else
+            {
+                rq.status = "collected";
+                db.requests.AddOrUpdate(rq);
+                TempData["msg"] = "Request of id " + id.ToString() + " is set as collected";
+                db.SaveChanges();
+            }
+            return RedirectToAction("requestlist");
+        }
+        [empAccess]
+        [HttpGet]
+        public ActionResult requestlist()
+        {
+            var db = new zero_hungerEntities();
+            return View(db.employees.Find((int)Session["id"]).requests.ToList());
+        }
+        [empAccess]
+        [HttpGet]
+        public ActionResult requestdetails(int id)
+        {
+            var db = new zero_hungerEntities();
+            return View(db.requests.Find(id));
+        }
+        [empAccess]
+        [HttpGet]
+        public ActionResult restaurantDetails(int id)
+        {
+            var db = new zero_hungerEntities();
+            return View(db.restaurants.Find(id));
         }
         [HttpGet]
         public ActionResult login()
@@ -39,6 +80,7 @@ namespace Zero_Hunger.Controllers
                     Session["user"] = user.username;
                     Session["id"] = user.id;
                     Session["type"] = "employee";
+                    TempData["msg"] = "Successfully logged in";
                     return RedirectToAction("Index");
                 }
                 else
@@ -52,6 +94,7 @@ namespace Zero_Hunger.Controllers
         public ActionResult logout()
         {
             Session.Clear();
+            TempData["msg"] = "Successfully logged out";
             return RedirectToAction("login");
         }
     }

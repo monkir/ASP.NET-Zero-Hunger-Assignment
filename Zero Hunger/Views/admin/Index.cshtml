@@ -4,30 +4,11 @@
     ViewBag.Title = "Index";
 }
 
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["msg"]
+    </div>
+}
 <h2>Index</h2>
 
-<table class="table table-bordered">
-    <tr>
-        <th>id</th>
-        <th>username</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Address</th>
-        <th>DOB</th>
-        <th>Addedd By</th>
-    </tr>
-    @foreach(var emp in Model)
-    {
-        <tr>
-            <td>@emp.id</td>
-            <td>@emp.username</td>
-            <td>@emp.name</td>
-            <td>@emp.email</td>
-            <td>@emp.phone</td>
-            <td>@emp.address</td>
-            <td>@emp.dob.ToShortDateString()</td>
-            <td>@(emp.admin != null ? emp.admin.username : "")</td>
-        </tr>
-    }
-</table>

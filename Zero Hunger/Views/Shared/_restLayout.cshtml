@@ -20,6 +20,7 @@
                     @if (Session["user"] != null && Session["type"].ToString().Equals("restaurant"))
                     {
                         <li>@Html.ActionLink("Index", "Index", "restaurant", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Cart", "cart", "restaurant", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Logout", "logout", "restaurant", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>
                             <span type="button" class="btn btn-primary position-relative">
