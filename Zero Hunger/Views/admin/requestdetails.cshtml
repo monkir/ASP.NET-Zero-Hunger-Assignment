@@ -77,7 +77,14 @@
                 <!-- Form is here-->
                 <form method="post">
                     <input type="hidden" value="@Model.id.ToString()" name="id" />
-                    <input type="text" name="emp_id" placeholder="@(Model.employee != null ? Model.employee.id.ToString() : "Not assigned")" />
+                    <!--input type="text" name="emp_id" placeholder="@(Model.employee != null ? Model.employee.id.ToString() : "Not assigned")" /-->
+                    <select name="emp_id">
+                        <option disabled @(Model.employee == null ? "selected" : "")>None</option>
+                        @foreach (Zero_Hunger.DB.employee e in ViewBag.empList)
+                        {
+                            <option value="@e.id" @(Model.employee != null && Model.employee.id.Equals(e.id) ? "selected" : "")>@e.name</option>
+                        }
+                    </select>
                     <input type="submit" value="Assign or Change" class="btn btn-danger" />
                 </form>
             }

@@ -42,6 +42,7 @@ namespace Zero_Hunger.Controllers
         public ActionResult requestdetails(int id)
         {
             var db = new zero_hungerEntities();
+            ViewBag.empList=db.employees.ToList();
             return View(db.requests.Find(id));
         }
         [adminAccess]
