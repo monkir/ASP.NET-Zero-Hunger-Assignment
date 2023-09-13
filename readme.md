@@ -9,19 +9,22 @@ restaurants, and they agreed to give us those foods before it gets
 rotten, or they will preserve those foods till we collect from them. We
 have some employees and still enrolling. Let me tell the workflow,
 
-1.  restaurants will open a collect request from their dashboard with
-    the maximum time they can preserve.
+1. restaurants will open a collect request from their dashboard with
+   the maximum time they can preserve.
 
-2.  We will accept collect request and assign an employee to collect the
-    foods.
+2. We will accept collect request and assign an employee to collect the
+   foods.
 
-3.  After collection the foods will be distributed by our employee and
-    upon completion the collect request will be completed.
+3. After collection the foods will be distributed by our employee and
+   upon completion the collect request will be completed.
 
-4.  System also needs to track all collect requests and their details.
+4. System also needs to track all collect requests and their details.
 
 **Assignment: Mark:30**
 
 **Do Whatever you can (using your wisdom not your friends), to help this
 NGO.**
-![](image/ER_Diagram.png)
+
+Diagram
+
+![](ER_Diagram.png)
